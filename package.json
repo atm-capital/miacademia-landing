@@ -1,0 +1,12 @@
+{
+  "name": "miacademia-landing",
+  "version": "1.0.0",
+  "description": "Landing page de MiAcademia — bot WhatsApp para academias deportivas y de danza",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "author": "ATM Capital LLC",
+  "license": "UNLICENSED"
+}

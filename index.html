@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiAcademia — Bot WhatsApp para tu academia | Atiende 24/7</title>
+  <meta name="description" content="Atiende horarios, precios, inscripciones y dudas comunes de tu academia automáticamente por WhatsApp. Tú solo entras a las conversaciones que importan." />
+
+  <meta property="og:title" content="MiAcademia — Bot WhatsApp para tu academia" />
+  <meta property="og:description" content="Atiende horarios, precios e inscripciones por WhatsApp automáticamente. 24/7, sin contratar a nadie." />
+  <meta property="og:image" content="https://miacademia.app/og-image.png" />
+  <meta property="og:url" content="https://miacademia.app" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/logo-symbol-only.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            teal: {
+              DEFAULT: '#0D9488',
+              light: '#14B8A6',
+              dark: '#0F766E',
+            },
+            navy: '#0F172A',
+            amber: {
+              DEFAULT: '#F59E0B',
+              dark: '#D97706',
+            },
+            slate: {
+              soft: '#64748B',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, .display { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .gradient-bg {
+      background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+    }
+    .bubble-shadow {
+      box-shadow: 0 20px 60px -15px rgba(13, 148, 136, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-white text-navy antialiased">
+
+  <!-- Header -->
+  <header class="border-b border-slate-100 bg-white/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3" aria-label="MiAcademia inicio">
+        <svg viewBox="0 0 200 200" class="w-9 h-9" aria-hidden="true">
+          <defs>
+            <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#14B8A6"/>
+              <stop offset="100%" stop-color="#0D9488"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(20, 20)">
+            <path d="M 30 0 L 130 0 Q 160 0 160 30 L 160 110 Q 160 140 130 140 L 70 140 L 50 165 L 50 140 L 30 140 Q 0 140 0 110 L 0 30 Q 0 0 30 0 Z" fill="url(#hg)"/>
+            <path d="M 45 70 L 75 100 L 125 50" stroke="white" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+        <span class="text-xl font-extrabold display tracking-tight">
+          <span class="text-navy">Mi</span><span class="text-teal">Academia</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-slate-soft">
+        <a href="#como-funciona" class="hover:text-navy transition">Cómo funciona</a>
+        <a href="#features" class="hover:text-navy transition">Qué hace</a>
+        <a href="#demo" class="hover:text-navy transition">Demo</a>
+      </nav>
+      <a href="https://wa.me/525555076729?text=Hola,%20quiero%20saber%20más%20sobre%20MiAcademia"
+         class="inline-flex items-center gap-2 bg-amber hover:bg-amber-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition">
+        Quiero saber más
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-block bg-teal/10 text-teal-dark text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6">
+          · Para academias deportivas y de danza ·
+        </span>
+        <h1 class="display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6">
+          El bot que contesta por tu academia
+          <span class="text-teal">24/7</span>.
+        </h1>
+        <p class="text-lg text-slate-soft mb-8 leading-relaxed">
+          Atiende horarios, precios, ubicación e inscripciones por WhatsApp automáticamente.
+          Tú solo entras a las conversaciones que se vuelven cliente.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="https://wa.me/525555076729?text=Hola,%20quiero%20probar%20MiAcademia%20en%20mi%20academia"
+             class="inline-flex items-center justify-center gap-2 bg-amber hover:bg-amber-dark text-white font-semibold px-6 py-3.5 rounded-lg transition shadow-sm">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+            Hablar por WhatsApp
+          </a>
+          <a href="#demo"
+             class="inline-flex items-center justify-center gap-2 bg-white border-2 border-navy/10 hover:border-navy/30 text-navy font-semibold px-6 py-3.5 rounded-lg transition">
+            Ver el bot en acción ↓
+          </a>
+        </div>
+        <p class="text-sm text-slate-soft mt-6">
+          · Sin instalar nada · Sin compromiso · Configuramos tu bot en 1 día ·
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="bg-gradient-to-br from-teal-light to-teal rounded-3xl p-8 bubble-shadow">
+          <div class="bg-white rounded-2xl p-5 max-w-sm mx-auto">
+            <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+              <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
+                <svg viewBox="0 0 200 200" class="w-7 h-7"><g transform="translate(20, 20)"><path d="M 30 0 L 130 0 Q 160 0 160 30 L 160 110 Q 160 140 130 140 L 70 140 L 50 165 L 50 140 L 30 140 Q 0 140 0 110 L 0 30 Q 0 0 30 0 Z" fill="white"/><path d="M 45 70 L 75 100 L 125 50" stroke="#0D9488" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-navy">Academia Tlali FC</p>
+                <p class="text-xs text-teal">en línea</p>
+              </div>
+            </div>
+            <div class="space-y-3 pt-4">
+              <div class="flex justify-end">
+                <div class="bg-amber/15 text-navy text-sm px-3 py-2 rounded-2xl rounded-tr-sm max-w-[80%]">
+                  Hola, ¿tienen clases para niños de 6 años?
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-slate-50 text-navy text-sm px-3 py-2 rounded-2xl rounded-tl-sm max-w-[85%]">
+                  Sí, tenemos categoría Sub-7 los martes y jueves de 5–6:30 pm. La inscripción son $400 y mensualidad $700. ¿Te gustaría agendar una clase de prueba gratis?
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <div class="bg-amber/15 text-navy text-sm px-3 py-2 rounded-2xl rounded-tr-sm">
+                  Sí porfa, mi hijo se llama Diego
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-slate-50 text-navy text-sm px-3 py-2 rounded-2xl rounded-tl-sm max-w-[85%]">
+                  ¡Listo Diego para la clase de prueba este martes 5 pm! Te confirmo en privado el coach que los recibe.
+                </div>
+              </div>
+              <p class="text-center text-xs text-slate-soft pt-2">Conversación real respondida por el bot</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problema gancho -->
+  <section class="bg-slate-50 py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="display text-3xl md:text-4xl font-extrabold mb-6 leading-tight">
+        Tu academia recibe <span class="text-teal">30+ mensajes al día</span> por WhatsApp.
+        ¿Cuántos respondes a tiempo?
+      </h2>
+      <p class="text-lg text-slate-soft leading-relaxed">
+        Padres preguntando horarios a las 9 pm, prospectos pidiendo precios el domingo, alumnos confirmando clases el lunes a las 6 am.
+        Cada mensaje sin respuesta es un cliente perdido — y tú no puedes estar 24/7 en el celular.
+      </p>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section id="como-funciona" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-teal/10 text-teal-dark text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4">Cómo funciona</span>
+        <h2 class="display text-3xl md:text-4xl font-extrabold mb-4">3 pasos. Sin instalar nada.</h2>
+        <p class="text-lg text-slate-soft">Tu bot está atendiendo en menos de 24 horas.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="relative">
+          <div class="text-5xl font-extrabold text-teal/20 display mb-4">01</div>
+          <h3 class="text-xl font-bold mb-3">Nos pasas tu información</h3>
+          <p class="text-slate-soft leading-relaxed">
+            Horarios, precios, ubicación, disciplinas, preguntas frecuentes. Todo lo que tus papás suelen preguntar.
+          </p>
+        </div>
+        <div class="relative">
+          <div class="text-5xl font-extrabold text-teal/20 display mb-4">02</div>
+          <h3 class="text-xl font-bold mb-3">Configuramos tu bot</h3>
+          <p class="text-slate-soft leading-relaxed">
+            Lo entrenamos con tus datos para que responda exactamente como tu academia. Tono, estilo, info real.
+          </p>
+        </div>
+        <div class="relative">
+          <div class="text-5xl font-extrabold text-teal/20 display mb-4">03</div>
+          <h3 class="text-xl font-bold mb-3">Conectas tu WhatsApp</h3>
+          <p class="text-slate-soft leading-relaxed">
+            Te damos un número o conectamos al tuyo. El bot atiende, tú entras solo a cerrar inscripciones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="bg-navy text-white py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-teal/20 text-teal-light text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4">Qué hace</span>
+        <h2 class="display text-3xl md:text-4xl font-extrabold mb-4">No es un chatbot genérico.</h2>
+        <p class="text-lg text-white/70">Está hecho para academias.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-teal/40 transition">
+          <div class="w-12 h-12 bg-teal/20 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-teal-light" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Responde 24/7</h3>
+          <p class="text-white/70 leading-relaxed">
+            A las 11 pm, en domingo, en festivos. El bot nunca duerme. Si un papá pregunta a deshoras, tu academia ya respondió en segundos.
+          </p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-teal/40 transition">
+          <div class="w-12 h-12 bg-teal/20 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-teal-light" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Sabe tu información real</h3>
+          <p class="text-white/70 leading-relaxed">
+            Horarios, precios, ubicación, edades por categoría, días de inscripción. Nunca inventa datos. Si no sabe algo, te avisa para que tú respondas.
+          </p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-teal/40 transition">
+          <div class="w-12 h-12 bg-teal/20 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-teal-light" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Atiende en paralelo</h3>
+          <p class="text-white/70 leading-relaxed">
+            10, 50 o 100 conversaciones a la vez. No importa si llegan 5 mensajes en el mismo minuto: cada papá recibe respuesta inmediata.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo -->
+  <section id="demo" class="py-24 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-teal/10 text-teal-dark text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4">Demo</span>
+        <h2 class="display text-3xl md:text-4xl font-extrabold mb-4">Mira el bot respondiendo en vivo.</h2>
+        <p class="text-lg text-slate-soft">Demo real, configurado para una academia de fútbol infantil.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+        <video controls preload="metadata" class="w-full aspect-video bg-navy">
+          <source src="/demo.mp4" type="video/mp4" />
+          Tu navegador no soporta el video.
+        </video>
+      </div>
+      <p class="text-center text-sm text-slate-soft mt-6">
+        Puedes pedir un demo configurado para tu academia en menos de 24 horas.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="gradient-bg py-24 text-white">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="display text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
+        ¿Listo para no volver a perder un mensaje?
+      </h2>
+      <p class="text-lg text-white/90 mb-10 leading-relaxed">
+        Configuramos tu bot gratis para que lo pruebes 1 mes. Si te ayuda, sigues. Si no, no pasa nada.
+      </p>
+      <a href="https://wa.me/525555076729?text=Hola,%20quiero%20probar%20MiAcademia%20gratis%201%20mes"
+         class="inline-flex items-center gap-2 bg-white text-teal-dark font-bold px-8 py-4 rounded-xl text-lg hover:bg-amber hover:text-white transition shadow-lg">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+        Empezar mi prueba gratis
+      </a>
+      <p class="text-sm text-white/75 mt-6">
+        Te respondemos en menos de 1 hora hábil.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy text-white/70 py-12 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div>
+        <a href="/" class="flex items-center gap-3 mb-4">
+          <svg viewBox="0 0 200 200" class="w-9 h-9">
+            <g transform="translate(20, 20)">
+              <path d="M 30 0 L 130 0 Q 160 0 160 30 L 160 110 Q 160 140 130 140 L 70 140 L 50 165 L 50 140 L 30 140 Q 0 140 0 110 L 0 30 Q 0 0 30 0 Z" fill="white"/>
+              <path d="M 45 70 L 75 100 L 125 50" stroke="#0D9488" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+          <span class="text-xl font-extrabold display tracking-tight text-white">MiAcademia</span>
+        </a>
+        <p class="text-sm leading-relaxed">
+          Bot WhatsApp que atiende padres y prospectos por tu academia. Mientras tú entrenas, el bot trabaja.
+        </p>
+      </div>
+      <div>
+        <p class="text-white font-semibold text-sm mb-3">Contacto</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="mailto:hola@miacademia.app" class="hover:text-white transition">hola@miacademia.app</a></li>
+          <li><a href="https://wa.me/525555076729" class="hover:text-white transition">WhatsApp directo</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white font-semibold text-sm mb-3">Síguenos</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="https://instagram.com/miacademia.app" class="hover:text-white transition" rel="noopener">Instagram</a></li>
+          <li><a href="https://facebook.com/61567947227120" class="hover:text-white transition" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 text-xs text-white/50">
+      © 2026 MiAcademia · Un producto de ATM Capital LLC · Hecho en México 🇲🇽
+    </div>
+  </footer>
+
+</body>
+</html>
