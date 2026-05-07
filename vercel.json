@@ -1,9 +1,23 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://miacademia-bot.vercel.app/api/:path*"
+    },
+    {
+      "source": "/onboarding",
+      "destination": "https://miacademia-bot.vercel.app/onboarding"
+    },
+    {
+      "source": "/onboarding/:path*",
+      "destination": "https://miacademia-bot.vercel.app/onboarding/:path*"
+    }
+  ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
