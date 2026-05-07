@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empezar prueba — MiAcademia</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['"Plus Jakarta Sans"','sans-serif'], sans: ['Inter','sans-serif'] },
+        colors: { teal: { DEFAULT:'#0D9488', dark:'#0F766E' }, navy:'#0F172A', amber:{DEFAULT:'#F59E0B', dark:'#D97706'}, slate:{soft:'#64748B'} }
+      }}
+    };
+  </script>
+  <style>body{font-family:'Inter',sans-serif} h1,h2{font-family:'Plus Jakarta Sans',sans-serif}</style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+  <header class="border-b border-slate-200 bg-white">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="/" class="flex items-center gap-3">
+        <svg viewBox="0 0 200 200" class="w-9 h-9">
+          <defs>
+            <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#14B8A6"/><stop offset="100%" stop-color="#0D9488"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(20, 20)">
+            <path d="M 30 0 L 130 0 Q 160 0 160 30 L 160 110 Q 160 140 130 140 L 70 140 L 50 165 L 50 140 L 30 140 Q 0 140 0 110 L 0 30 Q 0 0 30 0 Z" fill="url(#hg)"/>
+            <path d="M 45 70 L 75 100 L 125 50" stroke="white" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+        <span class="text-xl font-extrabold tracking-tight">
+          <span class="text-navy">Mi</span><span class="text-teal">Academia</span>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-6 py-16">
+    <div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-10 text-center">
+      <div class="w-16 h-16 bg-amber/15 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-amber-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h1 class="text-2xl md:text-3xl font-extrabold text-navy mb-3">Estamos terminando el checkout</h1>
+      <p class="text-slate-soft mb-6 leading-relaxed">
+        Estamos abriendo cupos limitados para los primeros 50 pilotos.
+        Déjanos tu correo y te mandamos acceso en menos de 24 horas con tu prueba de 14 días gratis.
+      </p>
+
+      <form id="waitlist-form" class="space-y-3 max-w-sm mx-auto" onsubmit="return submitWaitlist(event)">
+        <input type="email" required placeholder="tu@correo.com"
+               id="waitlist-email"
+               class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-teal" />
+        <input type="text" placeholder="Nombre de tu academia"
+               id="waitlist-academy"
+               class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-teal" />
+        <button type="submit"
+                class="w-full bg-amber hover:bg-amber-dark text-white font-bold px-6 py-3.5 rounded-lg transition">
+          Reservar mi cupo →
+        </button>
+      </form>
+
+      <div id="waitlist-success" class="hidden mt-6 p-4 bg-teal/10 text-teal-dark rounded-lg">
+        ¡Listo! Te contactamos en menos de 24 horas a tu correo y por WhatsApp si nos lo dejas.
+      </div>
+
+      <p class="text-xs text-slate-soft mt-8">
+        Mientras tanto, ¿quieres hablar con nosotros directo?
+        <a href="https://wa.me/525555076729?text=Hola,%20quiero%20probar%20MiAcademia" class="text-teal underline">WhatsApp</a> ·
+        <a href="mailto:hola@miacademia.app" class="text-teal underline">hola@miacademia.app</a>
+      </p>
+    </div>
+
+    <p class="text-center text-sm text-slate-soft mt-6">
+      <a href="/" class="hover:text-navy">← Volver a la página principal</a>
+    </p>
+  </main>
+
+  <script>
+    function submitWaitlist(e) {
+      e.preventDefault();
+      const email = document.getElementById('waitlist-email').value;
+      const academy = document.getElementById('waitlist-academy').value;
+      const params = new URLSearchParams(window.location.search);
+      const plan = params.get('plan') || 'basic';
+
+      // POST a un endpoint simple — por ahora redirige a WhatsApp con info pre-llenada
+      const msg = `Hola, soy de ${academy || 'una academia'} (${email}). Quiero probar MiAcademia plan ${plan} con los 14 días gratis.`;
+      window.open(`https://wa.me/525555076729?text=${encodeURIComponent(msg)}`, '_blank');
+
+      document.getElementById('waitlist-form').classList.add('hidden');
+      document.getElementById('waitlist-success').classList.remove('hidden');
+      return false;
+    }
+  </script>
+</body>
+</html>
